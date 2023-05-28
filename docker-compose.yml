@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    ports:
+      - 8000:8000
+    image: app:django
+    container_name: django_container
+    entrypoint: ./entrypoint.sh
+    env_file:
+      - ./.env
+    environment:
+      - DB_HOST=db
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+    depends_on:
+      - db
+  db:
+     image: postgis/postgis
+     environment:
+       - POSTGRES_DB=postgres
+       - POSTGRES_USER=postgres
+       - POSTGRES_PASSWORD=postgres
+     container_name: db
