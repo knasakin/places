@@ -1,0 +1,15 @@
+{% extends 'places/base.html' %}
+
+{% block content %}
+    <div id="map" class="text-center">
+        <form enctype="multipart/form-data" method="post" action="" class="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p><input class="btn btn-primary" type="submit" value="Сохранить"/></p>
+            <p><a class="btn btn-dark"
+                  role="button"
+                  href="{% url 'places' %}">Назад</a></p>
+        </form>
+    </div>
+
+{% endblock %}

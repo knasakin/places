@@ -1,0 +1,27 @@
+{% extends 'places/base.html' %}
+
+{% load socialaccount %}
+
+{% block header %}
+{% if request.user.is_authenticated %}
+    <div class="text-center">
+        <br><b>{{request.user.first_name}} {{request.user.last_name}}</b>
+        <p><img src="{{ user.socialaccount_set.all.first.get_avatar_url }}"
+                class="img-fluid img-thumbnail"
+                width="100"/></p>
+        <p><a class="btn btn-dark"
+              role="button"
+              href="{% url 'account_logout' %}">Выйти</a></p>
+        <p><a class="btn btn-primary"
+              role="button"
+              href="{% url 'places' %}">Мои воспоминания</a></p>
+    </div>
+{% else %}
+    <p></p>
+    <div class="text-center">
+        <p><a class="btn btn-success"
+              role="button"
+              href="{% provider_login_url 'vk' %}">Войти с помощью VK</a></p>
+    </div>
+{% endif %}
+{% endblock %}
