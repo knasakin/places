@@ -19,9 +19,10 @@
 **Для запуска сервиса:**
 
 1) создать ВК-приложение (stand-alone или веб-сайт). Базовые домены 127.0.0.0 и 0.0.0.0, доверенный redirect URI - пустой.
-2) создать в корне проекта .env файл с ключами от ВК-приложения (VK_CLIENT_ID, VK_SECRET, VK_KEY)
-3) docker compose build, docker compose up 
-4) docker exec -it django_container /bin/bash, python manage.py test (для запуска тестов внутри контейнера)
+2) также потребуется SECRET_KEY DJANGO, команда для создания проекта django-admin startproject project .)
+3) создать в корне проекта .env файл с ключами от ВК-приложения и SECRET_KEY DJANGO (VK_CLIENT_ID, VK_SECRET, VK_KEY, SECRET_KEY)
+4) docker compose build, docker compose up 
+5) docker exec -it django_container /bin/bash, python manage.py test (для запуска тестов внутри контейнера)
 
 **Не удалось выполнить :(**
 1) Запуск тестов при новых коммитах реализован с использованием github actions.
